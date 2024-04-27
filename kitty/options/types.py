@@ -49,6 +49,7 @@ option_names = (  # {{{
  'background',
  'background_blur',
  'background_image',
+ 'background_image_fullscreen_only',
  'background_image_layout',
  'background_image_linear',
  'background_opacity',
@@ -477,6 +478,7 @@ class Options:
     background: Color = Color(0, 0, 0)
     background_blur: int = 0
     background_image: typing.Optional[str] = None
+    background_image_fullscreen_only: bool = False
     background_image_layout: choices_for_background_image_layout = 'tiled'
     background_image_linear: bool = False
     background_opacity: float = 1.0

@@ -71,6 +71,9 @@ class Parser:
     def background_image(self, val: str, ans: typing.Dict[str, typing.Any]) -> None:
         ans['background_image'] = config_or_absolute_path(val)
 
+    def background_image_fullscreen_only(self, val: str, ans: typing.Dict[str, typing.Any]) -> None:
+        ans['background_image_fullscreen_only'] = to_bool(val)
+
     def background_image_layout(self, val: str, ans: typing.Dict[str, typing.Any]) -> None:
         val = val.lower()
         if val not in self.choices_for_background_image_layout:

@@ -1486,6 +1486,11 @@ opt('background_image', 'none',
     long_text='Path to a background image. Must be in PNG format.'
     )
 
+opt('background_image_fullscreen_only', 'no',
+    option_type='to_bool', ctype='bool',
+    long_text='Whether to show the background image only in fullscreen mode'
+    )
+
 opt('background_image_layout', 'tiled',
     choices=('mirror-tiled', 'scaled', 'tiled', 'clamped', 'centered', 'cscaled'),
     ctype='bglayout',

@@ -63,7 +63,7 @@ typedef struct {
     char *background_image, *default_window_logo;
     BackgroundImageLayout background_image_layout;
     ImageAnchorPosition window_logo_position;
-    bool background_image_linear;
+    bool background_image_linear, background_image_fullscreen_only;
     float background_tint, background_tint_gaps, window_logo_alpha;
 
     bool dynamic_background_opacity;

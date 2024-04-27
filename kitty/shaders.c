@@ -9,6 +9,7 @@
 #include "gl.h"
 #include "colors.h"
 #include <stddef.h>
+#include "state.h"
 #include "window_logo.h"
 #include "srgb_gamma.h"
 #include "uniforms_generated.h"
@@ -578,7 +579,7 @@ draw_cells_simple(ssize_t vao_idx, Screen *screen, const CellRenderData *crd, bo
 
 static bool
 has_bgimage(OSWindow *w) {
-    return w->bgimage && w->bgimage->texture_id > 0;
+    return w->bgimage && w->bgimage->texture_id > 0 && (is_os_window_fullscreen(w) || !OPT(background_image_fullscreen_only));
 }
 
 static void

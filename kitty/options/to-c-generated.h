@@ -786,6 +786,19 @@ convert_from_opts_background_image(PyObject *py_opts, Options *opts) {
 }
 
 static void
+convert_from_python_background_image_fullscreen_only(PyObject *val, Options *opts) {
+    opts->background_image_fullscreen_only = PyObject_IsTrue(val);
+}
+
+static void
+convert_from_opts_background_image_fullscreen_only(PyObject *py_opts, Options *opts) {
+    PyObject *ret = PyObject_GetAttrString(py_opts, "background_image_fullscreen_only");
+    if (ret == NULL) return;
+    convert_from_python_background_image_fullscreen_only(ret, opts);
+    Py_DECREF(ret);
+}
+
+static void
 convert_from_python_background_image_layout(PyObject *val, Options *opts) {
     opts->background_image_layout = bglayout(val);
 }
@@ -1257,6 +1270,8 @@ convert_opts_from_python_opts(PyObject *py_opts, Options *opts) {
     convert_from_opts_background_blur(py_opts, opts);
     if (PyErr_Occurred()) return false;
     convert_from_opts_background_image(py_opts, opts);
+    if (PyErr_Occurred()) return false;
+    convert_from_opts_background_image_fullscreen_only(py_opts, opts);
     if (PyErr_Occurred()) return false;
     convert_from_opts_background_image_layout(py_opts, opts);
     if (PyErr_Occurred()) return false;
